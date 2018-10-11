@@ -52,7 +52,7 @@
 - Dep依赖对象
 - Watcher监听依赖对象
 
-这里分为两个部分：data、computed，它们的实现是存在区别的，主要是的两点区别：
+这里分为两个部分：data、computed，它们的实现是存在区别的，主要是的两点区别：
 
 - computed是具有缓存性质的
 - computed所对应的Watcher依赖收集不完全相同于data
@@ -60,6 +60,7 @@
 ![Vue响应式原理](./assets/viewModel.png)
 
 **data**
+
 关于data的响应式处理，Vue.js中的主要处理流程可以看下面的Vue之data处理及挂载文章。
 
 本次MVVM中关于这边的处理，主要处理逻辑如下：
@@ -72,33 +73,36 @@
 > _init -> initState -> initComputed -> Watcher -> defineComputed
 
 #### $mount挂载
-$mount这个过程过程会触发：
+$mount这个过程过程会触发：
 
 - data对应的Watcher对象的构建
 - render函数的构建
 - VNode的创建
-- Vnode转换为真实DOM
+- Vnode转换为真实DOM
 
 **data对应Watcher实现**    
+
 MVVM中关于此处的主要处理逻辑如下：
 > _init -> $mount -> new Watcher
 
 **render函数构建及调用**    
+
 MVVM中关于此处的主要处理逻辑如下：   
 > _init -> $mount -> compile生成render函数
 
 > compile -> parse生成ast -> generate生成code -> new Function
 
-关于render函数的调用是data对应的Watcher对象创建触发的，MVVM此处的主要实现逻辑如下：
+关于render函数的调用是data对应的Watcher对象创建触发的，MVVM此处的主要实现逻辑如下：
 > new Watcher -> Watcher实例方法get调用 -> 触发_render函数方法 -> 触发_update实例方法
 
 **Vnode的创建以及转换为真实DOM**   
+
 MVVM关于此处的处理如下：
 > _update -> _patch -> createElm + removeVnodes
 
 
 ### 相关文章
-在分析Vue.js源码过程中，写下了几篇差强人意的文章便于之后回顾完善（实际上我推荐直接看代码，debugger才是王道），具体链接如下：
+在分析Vue.js源码过程中，写下了几篇差强人意的文章便于之后回顾完善（实际上我推荐直接看代码，debugger才是王道），具体链接如下：
 
 - [Vue初始化](https://blog.csdn.net/s1879046/article/details/82049968)
 - [Vue之data处理及挂载](https://blog.csdn.net/s1879046/article/details/82151666)
