@@ -109,7 +109,7 @@ MVVM关于此处的处理如下：
 - [Vue之computed](https://blog.csdn.net/s1879046/article/details/82381468)
 - [Vue之render构建+调用](https://blog.csdn.net/s1879046/article/details/82881751)
 - [Vue之解析template](https://blog.csdn.net/s1879046/article/details/82662704)
-- [Vue之Vnode创建](https://blog.csdn.net/s1879046/article/details/82910130)
+- [Vue之Vnode创建](https://blog.csdn.net/s1879046/article/details/82910130)
 - [Vue之vnode转换为真实DOM](https://blog.csdn.net/s1879046/article/details/82979954)
 
 
