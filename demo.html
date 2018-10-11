@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MVVM</title>
+  <style>
+    #app {
+      margin: 20px auto;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    {{ text }}
+    <div>{{ getText }}</div>
+  </div>
+  <input type="text" onInput="handleInput(event)">
+  <script src="./mvvm.js"></script>
+  <script>
+  const vm = new MVVM({
+    el: '#app',
+    data: {
+      text: 'hello mvvm'
+    },
+    computed: {
+      getText() {
+        return `${this.text}, it's a computed`;
+      }
+    }
+  });
+  console.log(vm);
+  const handleInput = function(e) {
+    vm.text = e.target.value;
+  };
+  </script>
+</body>
+</html>
